@@ -1,0 +1,30 @@
+# Cloudflare Pages cache rules.
+#
+# The clips and stills are content-addressed only by name, so they get a long
+# immutable cache: a returning visitor re-watches the whole story without
+# re-downloading a byte. If you ever re-encode the media under the same
+# filenames, bump a query string on the reference or these will stay stale.
+#
+# HTML is always revalidated, because index.html is what carries the ?v=
+# markers that bust the CSS and JS.
+
+/*.mp4
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/thumbs/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/music.mp3
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=604800
+
+/css/*
+  Cache-Control: public, max-age=604800
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate

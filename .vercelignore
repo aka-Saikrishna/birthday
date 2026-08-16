@@ -1,0 +1,5 @@
+# Local tooling and working files — never served.
+.claude/
+.opt-test/
+.opt-out/
+.media-backup/

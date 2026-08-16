@@ -1,0 +1,7 @@
+# Originals of the thumbnails, kept aside before they were optimised.
+# Safe to delete once the compressed versions are confirmed good.
+.media-backup/
+
+# Scratch dirs used while re-encoding media
+.opt-test/
+.opt-out/
