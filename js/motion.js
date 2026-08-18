@@ -68,7 +68,7 @@
       cap.className = 'cap';
       cap.id = 'cap-' + i;
       cap.innerHTML =
-        '<p class="cap__eyebrow">' + ch.act + ' &nbsp;·&nbsp; ' + ch.year + '</p>' +
+        '<p class="cap__eyebrow">' + ch.year + '</p>' +
         '<h2 class="cap__title" data-split>' + ch.title + '</h2>' +
         '<ul class="cap__lines">' +
           '<li class="cap__script" data-split>' + ch.script + '</li>' +
@@ -254,32 +254,48 @@
     });
 
     /* 3 · the world steps back while the DOM sections speak */
+    const pin = $('.voyage__pin');
+    /* The letter is the first thing to speak after the voyage, so it owns the
+       handoff: the world steps back across its approach, then stays back. */
     ScrollTrigger.create({
-      trigger: '#plx',
+      trigger: '#letter',
       start: 'top bottom',
       end: 'top center',
-      onUpdate(self) { window.ForeverWorld.setTail(self.progress); }
+      onUpdate(self) {
+        window.ForeverWorld.setTail(self.progress);
+        /* the caption scrim leaves with the memories it was darkening for,
+           so the pin never releases with a hard edge still painted on it */
+        if (pin) pin.style.setProperty('--scrim', String(1 - self.progress));
+      }
     });
+    ScrollTrigger.create({
+      trigger: '#letter',
+      start: 'top center',
+      end: 'bottom top',
+      onUpdate() { window.ForeverWorld.setTail(1); }
+    });
+    /* Hold the world back for the whole finale rather than releasing it as the
+       section arrives. Letting tail fall here used to reopen a window - it
+       started at 'top bottom', which lands while the letter is still being
+       read, and setFinale does not begin until 'top 80%' - so for that stretch
+       nothing held the memories down and the last frame drifted back in behind
+       the letter. The camera does not need the release: its tail and finale
+       lerps run in sequence, so a finale at full strength overrides a tail of
+       1 and arrives at the same place. */
     ScrollTrigger.create({
       trigger: '#finale',
       start: 'top bottom',
-      end: 'top top',
-      onUpdate(self) { window.ForeverWorld.setTail(1 - self.progress); }
+      end: 'bottom bottom',
+      onUpdate() { window.ForeverWorld.setTail(1); }
+    });
+    ScrollTrigger.create({
+      trigger: '#finale',
+      start: 'top 80%',
+      end: 'bottom bottom',
+      onUpdate(self) { window.ForeverWorld.setFinale(self.progress); }
     });
 
-    /* 4 · parallax interlude */
-    $$('.plx__layer, .plx__glow').forEach((el) => {
-      const d = parseFloat(el.dataset.depth) || 0.2;
-      gsap.fromTo(el,
-        { yPercent: d * 70, scale: 1 + d * 0.12 },
-        {
-          yPercent: -d * 70, scale: 1, ease: 'none',
-          scrollTrigger: { trigger: '#plx', start: 'top bottom', end: 'bottom top', scrub: true }
-        });
-    });
-    revealOnScroll('#plx');
-
-    /* 5 · the letter, word by word */
+    /* 4 · the letter, word by word */
     const words = $$('.lw');
     let lit = 0;
     ScrollTrigger.create({
@@ -352,16 +368,11 @@
       const cur = $('#cursor');
       const qx = gsap.quickTo(cur, 'x', { duration: .5, ease: 'power3' });
       const qy = gsap.quickTo(cur, 'y', { duration: .5, ease: 'power3' });
-      const tiltables = $$('.plx__layer');
-
       window.addEventListener('pointermove', (e) => {
         qx(e.clientX); qy(e.clientY);
         const nx = (e.clientX / window.innerWidth) * 2 - 1;
         const ny = -((e.clientY / window.innerHeight) * 2 - 1);
         if (body.dataset.world === 'live') window.ForeverWorld.pointer(nx, ny);
-        tiltables.forEach((el, i) => {
-          gsap.to(el, { x: nx * (10 + i * 9), y: ny * -(6 + i * 6), duration: 1.1, ease: 'power3.out', overwrite: 'auto' });
-        });
       }, { passive: true });
 
       window.addEventListener('pointerdown', (e) => {

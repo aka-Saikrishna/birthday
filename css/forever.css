@@ -342,6 +342,11 @@ body[data-world='live'] .cursor { opacity: 1; }
   inset: auto 0 0 0;
   height: 74%;
   pointer-events: none;
+  /* Driven to 0 as the interlude arrives. While the pin is stuck this scrim
+     ends on the viewport edge and is invisible; the moment the pin releases,
+     its 88% bottom would sit in the middle of the page as a hard rule across
+     the seam between the two sections. */
+  opacity: var(--scrim, 1);
   background: linear-gradient(to top,
     rgba(8, 6, 13, .88) 0%,
     rgba(8, 6, 13, .62) 26%,
@@ -504,107 +509,6 @@ body[data-world='live'] .cursor { opacity: 1; }
   width: 26px;
   background: rgba(var(--accent), 1);
   box-shadow: 0 0 10px rgba(var(--accent), .8);
-}
-
-/* ── parallax interlude ─────────────────────────────────────────── */
-.plx {
-  position: relative;
-  z-index: 3;
-  min-height: 150vh;
-  display: grid;
-  place-items: center;
-  padding: 22vh var(--gutter);
-  overflow: clip;
-}
-.plx__layers {
-  position: absolute;
-  inset: -12% -6%;
-  pointer-events: none;
-}
-.plx__layer {
-  position: absolute;
-  background-size: cover;
-  background-position: center;
-  border-radius: 6px;
-  will-change: transform;
-  filter: saturate(.72) contrast(1.06);
-}
-.plx__layer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 0 90px 20px rgba(8, 6, 13, .9);
-}
-/* paths are relative to this stylesheet, so they climb out of /css/ */
-.plx__layer--far  { background-image: url('../assets/thumbs/8.jpg'); }
-.plx__layer--mid  { background-image: url('../assets/thumbs/7.jpg'); }
-.plx__layer--near { background-image: url('../assets/thumbs/13.jpg'); }
-
-.plx__layer--far {
-  inset: 4% 4% auto auto;
-  width: clamp(280px, 44vw, 640px);
-  aspect-ratio: 16 / 10;
-  opacity: .34;
-  filter: blur(3px) saturate(.5);
-}
-.plx__layer--mid {
-  inset: auto auto 8% 2%;
-  width: clamp(240px, 36vw, 520px);
-  aspect-ratio: 4 / 3;
-  opacity: .44;
-  filter: blur(1px) saturate(.7);
-}
-.plx__layer--near {
-  inset: 26% auto auto 58%;
-  width: clamp(180px, 24vw, 360px);
-  aspect-ratio: 3 / 4;
-  opacity: .58;
-}
-.plx__glow {
-  position: absolute;
-  left: 50%; top: 46%;
-  width: 74vw; height: 74vw;
-  max-width: 900px; max-height: 900px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(var(--accent), .22), transparent 62%);
-  filter: blur(30px);
-}
-.plx__copy {
-  position: relative;
-  max-width: 720px;
-  text-align: center;
-}
-.plx__eyebrow {
-  font-size: 10px;
-  letter-spacing: .4em;
-  text-transform: uppercase;
-  color: rgba(var(--accent), .95);
-  margin-bottom: 20px;
-}
-.plx__title {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(38px, 7.5vw, 104px);
-  line-height: .96;
-  letter-spacing: -.035em;
-  text-shadow: 0 20px 60px rgba(0, 0, 0, .7);
-}
-.plx__title span { display: block; }
-.plx__title em {
-  display: block;
-  font-family: var(--script);
-  font-style: normal;
-  font-size: 1.45em;
-  line-height: .8;
-  color: var(--gold);
-}
-.plx__body {
-  margin: clamp(24px, 4vw, 38px) auto 0;
-  max-width: 46ch;
-  font-size: clamp(14px, 1.5vw, 17px);
-  color: var(--cream-dim);
 }
 
 /* ── the letter ─────────────────────────────────────────────────── */
@@ -781,7 +685,6 @@ body[data-phase='live'] .dock { opacity: 1; transform: none; }
   .rail { display: none; }
   .stage { inset: auto var(--gutter) clamp(64px, 14vh, 110px) var(--gutter); }
   .cap { width: 100%; }
-  .plx__layer--near { inset: 30% auto auto 52%; }
 }
 
 @media (max-width: 640px) {
@@ -789,7 +692,6 @@ body[data-phase='live'] .dock { opacity: 1; transform: none; }
   .counter em { display: none; }
   .dock { left: 50%; transform: translate(-50%, 14px); }
   body[data-phase='live'] .dock { transform: translate(-50%, 0); }
-  .plx { min-height: 130vh; }
 }
 
 /* ── the flat path ──────────────────────────────────────────────────

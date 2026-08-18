@@ -786,7 +786,10 @@ window.ForeverWorld = (function () {
 
     /* ── frames ── */
     /* during the hero the memories are only ghosts ahead of you */
-    const framesOn = (1 - state.tail) * (1 - state.finale) * (1 - state.hero * 0.86);
+    /* tail is held at 1 from the interlude through the finale, so this alone
+       keeps the memories down for every section after the voyage. */
+    const back = Math.max(state.tail, state.finale);
+    const framesOn = (1 - back) * (1 - state.hero * 0.86);
     for (let i = 0; i < N; i++) {
       const m = frames[i];
       const u = m.material.uniforms;

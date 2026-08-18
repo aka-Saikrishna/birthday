@@ -15,7 +15,7 @@ window.SIXTEEN = (function () {
 
   const CHAPTERS = [
     {
-      n: '01', act: 'Act I', year: '2013', mood: 'Soft golden dusk',
+      n: '01', act: 'I', year: '2013', mood: 'Soft golden dusk',
       title: 'Where It All Started',
       script: 'You know the story we lived…',
       serif: 'But do you remember where it all started?',
@@ -24,7 +24,7 @@ window.SIXTEEN = (function () {
       tint: c(196, 138, 74), tint2: c(48, 28, 22), motif: 0, dwell: 1.15
     },
     {
-      n: '02', act: 'Act I', year: '2013', mood: 'Warm nostalgia',
+      n: '02', act: 'I', year: '2013', mood: 'Warm nostalgia',
       title: 'Our First Chapter',
       script: 'Two people… one ordinary school…',
       serif: 'And a story neither of us knew would last this long.',
@@ -33,7 +33,7 @@ window.SIXTEEN = (function () {
       tint: c(206, 140, 100), tint2: c(52, 26, 30), motif: 0, dwell: 1.0
     },
     {
-      n: '03', act: 'Act I', year: '2013', mood: 'Gentle anticipation',
+      n: '03', act: 'I', year: '2013', mood: 'Gentle anticipation',
       title: 'From Strangers to Us',
       script: 'We didn’t know it then…',
       serif: 'But we were already making memories we’d never give back.',
@@ -42,7 +42,7 @@ window.SIXTEEN = (function () {
       tint: c(190, 146, 86), tint2: c(42, 32, 22), motif: 0, dwell: 1.05
     },
     {
-      n: '04', act: 'Act I', year: '2013 → now', mood: 'Bittersweet, split-era',
+      n: '04', act: 'I', year: '2013 → now', mood: 'Bittersweet, split-era',
       title: 'Growing Together',
       script: 'We grew up. We changed. Life changed…',
       serif: 'But one thing never did.',
@@ -51,7 +51,7 @@ window.SIXTEEN = (function () {
       tint: c(158, 124, 168), tint2: c(32, 24, 46), motif: 2, dwell: 1.25
     },
     {
-      n: '05', act: 'Act II', year: 'Hyderabad', mood: 'Warm amber comfort',
+      n: '05', act: 'II', year: 'Hyderabad', mood: 'Warm amber comfort',
       title: 'Belposto Café',
       script: 'And somewhere along the way…',
       serif: 'We found little places that became part of our story.',
@@ -60,7 +60,7 @@ window.SIXTEEN = (function () {
       tint: c(224, 130, 56), tint2: c(50, 26, 14), motif: 1, dwell: 1.0
     },
     {
-      n: '06', act: 'Act II', year: 'Hyderabad', mood: 'Quiet intimacy',
+      n: '06', act: 'II', year: 'Hyderabad', mood: 'Quiet intimacy',
       title: 'The Little Moments',
       script: 'Some places aren’t special because of where they are…',
       serif: 'They’re special because of who you’re with.',
@@ -69,7 +69,7 @@ window.SIXTEEN = (function () {
       tint: c(208, 110, 54), tint2: c(46, 22, 14), motif: 1, dwell: 1.0
     },
     {
-      n: '07', act: 'Act II', year: 'Golden hour', mood: 'Freedom at golden hour',
+      n: '07', act: 'II', year: 'Golden hour', mood: 'Freedom at golden hour',
       title: 'Our Hyderabad Rides',
       script: 'And then there were the rides…',
       serif: 'Just you. Me. And the whole city moving past us.',
@@ -78,7 +78,7 @@ window.SIXTEEN = (function () {
       tint: c(236, 140, 62), tint2: c(56, 28, 16), motif: 2, dwell: 1.05
     },
     {
-      n: '08', act: 'Act II', year: 'After dark', mood: 'Magical glow',
+      n: '08', act: 'II', year: 'After dark', mood: 'Magical glow',
       title: 'Hyderabad at Night',
       script: 'No destination. No plans. Just us.',
       serif: 'And somehow… those were always the best rides.',
@@ -87,7 +87,7 @@ window.SIXTEEN = (function () {
       tint: c(96, 122, 214), tint2: c(12, 16, 42), motif: 1, dwell: 1.0
     },
     {
-      n: '09', act: 'Act III', year: 'Dandeli', mood: 'Wild and quiet',
+      n: '09', act: 'III', year: 'Dandeli', mood: 'Wild and quiet',
       title: 'The Dandeli Chapter',
       script: 'And then we escaped the city…',
       serif: 'To somewhere a little quieter, a little greener.',
@@ -96,7 +96,7 @@ window.SIXTEEN = (function () {
       tint: c(92, 172, 118), tint2: c(14, 36, 28), motif: 3, dwell: 1.05
     },
     {
-      n: '10', act: 'Act III', year: 'Dandeli', mood: 'Tender connection',
+      n: '10', act: 'III', year: 'Dandeli', mood: 'Tender connection',
       title: 'Dandeli, Together',
       script: 'We went looking for an adventure…',
       serif: 'And came back holding another memory.',
@@ -105,16 +105,16 @@ window.SIXTEEN = (function () {
       tint: c(176, 166, 84), tint2: c(28, 38, 22), motif: 3, dwell: 1.15
     },
     {
-      n: '11', act: 'Act IV', year: '2013 → now', mood: 'Emotional climax',
+      n: '11', act: 'IV', year: '2013 → now', mood: 'Emotional climax',
       title: 'Look How Far We’ve Come',
       script: '2013… and now…',
       serif: 'Time passed. Everything moved. We didn’t.',
-      gold: 'Look how far we’ve come',
+      gold: 'Look how far we’ve’ve come',
       still: 'assets/thumbs/11.jpg', video: '11.mp4',
       tint: c(184, 118, 152), tint2: c(38, 22, 44), motif: 2, dwell: 1.3
     },
     {
-      n: '12', act: 'Act IV', year: 'Keepsakes', mood: 'Quiet keepsakes',
+      n: '12', act: 'IV', year: 'Keepsakes', mood: 'Quiet keepsakes',
       title: 'All the Little Things',
       script: 'It was never just the big moments…',
       serif: 'It was every small one in between.',
@@ -123,7 +123,7 @@ window.SIXTEEN = (function () {
       tint: c(192, 144, 84), tint2: c(44, 30, 20), motif: 2, dwell: 1.05
     },
     {
-      n: '13', act: 'Act IV', year: 'Tonight', mood: 'Dreamlike romance',
+      n: '13', act: 'IV', year: 'Tonight', mood: 'Dreamlike romance',
       title: 'My Favourite Part',
       script: 'Somewhere between 2013 and today…',
       serif: 'You became more than a part of my story.',
@@ -132,7 +132,7 @@ window.SIXTEEN = (function () {
       tint: c(88, 106, 196), tint2: c(12, 16, 38), motif: 4, dwell: 1.2
     },
     {
-      n: '14', act: 'Act V', year: 'Her birthday', mood: 'Joyful surprise',
+      n: '14', act: 'V', year: 'Her birthday', mood: 'Joyful surprise',
       title: 'And Today Is Yours',
       script: 'And today…',
       serif: 'It’s your turn to be the one celebrated.',
@@ -141,7 +141,7 @@ window.SIXTEEN = (function () {
       tint: c(226, 116, 124), tint2: c(50, 20, 30), motif: 4, dwell: 1.15
     },
     {
-      n: '15', act: 'Act V', year: 'Everything', mood: 'Cinematic remembrance',
+      n: '15', act: 'V', year: 'Everything', mood: 'Cinematic remembrance',
       title: 'Everything, All at Once',
       script: 'From a school in 2013… to countless memories.',
       serif: 'To every ordinary day you turned into something special.',
@@ -150,7 +150,7 @@ window.SIXTEEN = (function () {
       tint: c(198, 124, 120), tint2: c(40, 24, 32), motif: 5, dwell: 1.3
     },
     {
-      n: '16', act: 'Act V', year: 'Forever', mood: 'Cinematic ending',
+      n: '16', act: 'V', year: 'Forever', mood: 'Cinematic ending',
       title: 'I’d Still Choose You',
       script: 'And after all these years…',
       serif: 'If I had to choose all over again — I’d still choose you.',
